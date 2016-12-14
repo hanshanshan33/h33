@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            font-family: "微软雅黑";
+            /*height: 11111px;*/
+        }
+        .top{
+            height: 58px;
+            background-color: #191D3A;
+        }
+        .top .banxin{
+            width: 1000px;
+            height: 58px;
+            /*background-color: #fff;*/
+            margin: 0 auto;
+        }
+        .top .banxin .logo{
+            float: left;
+            color: white;
+            width: 185px;
+            height: 58px;
+            line-height: 58px;
+            padding-right: 40px;
+        }
+        .top .banxin ul{
+            list-style: none;
+        }
+        .top .banxin ul li{
+            float: left;
+            width: 100px;
+            height: 58px;
+            line-height: 58px;
+            text-align: center;
+        }
+        .top .banxin ul li a{
+            display: block;
+            text-decoration: none;
+            width: 100px;
+            height: 58px;
+            color: #ffffff;
+        }
+        .top .banxin ul li a:hover{
+            width: 100px;
+            height: 58px;
+            color: #ffffff;
+            background-color: #fcb618;
+        }
+        .top .banxin ul li.yi a{
+            color: #ffffff;
+            background-color: #fcb618;
+        }
+        .top .banxin .jrwm{
+            float: left;
+            width: 100px;
+            height: 34px;
+            background-color: #fcb618;
+            margin-left: 48px;
+            position: relative;
+            top: 12px;
+            left: 0;
+            text-align: center;
+            line-height: 34px;
+            color:white;
+            text-decoration: none;
+            font-size: 12px;
+            /*圆角边框：*/
+            border-radius: 4px;
+        }
+        .top .banxin a.jrwm:hover{
+            background-color: #fc7417;
+        }
+        .welcome:hover{text-decoration: none;color: #fcb618
+        }
+        .welcome{font-family: 微软雅黑; color: #fcb618;margin-left: 20px;margin-top: 20px;float: left;}
+        .hss{
+            width: 100%;
+            height: 50px;
+            background-color: #eceef1;
+            padding-top: 15px;
+            padding-left: 50%;
+        }
+
+
+    </style>
+    <script src="jquery/jquery.min.js"></script>
+    <script src="js/js.cookie-2.1.0.min.js"></script>
+    <script src="arg-1.3.min.js"></script>
+    <script src="layer/layer.js"></script>
+
+</head>
+<body>
+<div class="top">
+    <div class="banxin">
+        <div class="logo">33旅游网logo</div>
+        <ul>
+            <li class="yi">
+                <a href="index.html">首页</a>
+            </li>
+            <li>
+                <a href="#">旅游胜地</a>
+            </li>
+            <li>
+                <a href="#">美食分享</a>
+            </li>
+            <li>
+                <a href="#">吃喝玩乐</a>
+            </li>
+            <li>
+                <a href="#">热门推荐</a>
+            </li>
+            <li class="hou">
+                <a href="#">联系我们</a>
+            </li>
+        </ul>
+        <a id="ww" class="welcome"></a>
+    </div>
+
+</div>
+<div class="hss">
+    <input id="input" type="text" name="" style="width: 391px;height: 30px;background-color: #ffffff;float: left;color: #666;"/>
+    <input type="submit" id="submit" style="width: 49px;margin-left: 5px;height: 32px;color: white; background: #ffa608; float: left;"/>
+</div>
+<!--     面板 -->
+<div class="sousuo" >
+    <div class="container">
+        <div class="row" id="sou">
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    //<a href="loging.html" class="jrwm">用户登录</a>
+    if(Cookies.get('user')){
+        console.log(Cookies.get('user'));
+//		document.getElementById('ww').innerText = Cookies.get('user');
+        document.getElementById('ww').innerHTML = '<p class="x">欢迎您,' + Cookies.get('user') + '</p>'
+    } else {
+        var e = document.getElementById('ww');
+        console.log(e);
+        e.textContent = '用户登录';
+        e.setAttribute('class', 'jrwm');
+        e.setAttribute('href', 'login.html');
+        console.log('获取');
+    }
+</script>
+
+
+<script src="handlebars-v4.0.5.js"></script>
+<!--搜索到的信息使其显示到页面-->
+<script id="out" type="text/x-handlebars-template">
+    {{#each wad}}
+    <div class="co">
+        <img src="{{pic_2}}" />
+    </div>
+    <div class="md">
+        <div class="wzi" style="height: 250px;width: 1000px;margin: 30px auto;border: solid 1px ;border-color: #d9dbde">
+                <img src="{{pic_1}}" style="margin-top:40px;float: left;margin-left:40px"/>
+                <ul style="list-style: none;margin-top:40px;float: left;margin-left:20px;">
+                    <li style="list"><p>{{name}}</p></li>
+                    <li><p>{{taste}}</p></li>
+                    <li><p>{{propose}}</p></li>
+                    <li><p>{{area}}</p></li>
+                </ul>
+        </div>
+    </div>
+
+    {{/each}}
+</script>
+
+
+
+
+<!--首页搜索到多条时显示在搜索页面-->
+<script type="text/javascript">
+    var s=Arg('search');
+    console.log(s);
+    $(function(){
+        if(s){
+            $.ajax({
+                url:'wad/search',
+                method:'post',
+                data:{search:s},
+                dataType:'json',
+                success:function(data,status,xhr){
+                    console.log('2');
+                    var source = $('#out').html();
+                    var template = Handlebars.compile(source);
+                    var da = {'wad': data};
+                    $('#sou').html(template(da));
+
+                },
+            })
+        }
+        else{console.log('查询错误')}
+    })
+
+</script>
+
+<script type="text/javascript">
+    $(function(){
+            $.ajax({
+                url:'wad/search',
+                method:'post',
+                data: {search: $('#input').val()},
+                dataType:'json',
+                success:function(data,status,xhr){
+                    console.log('2');
+                    console.log(data[0]);
+                    var source = $('#out').html();
+                    var template = Handlebars.compile(source);
+                    var da = {'wad': data};
+                    $('#sou').html(template(da));
+                },
+                error:function(xhr,status,error){
+                    console.log(error);
+                }
+            });
+        });
+</script>
+
+<!--搜索页搜索到多条显示在本页-->
+<script type="text/javascript">
+    $(function(){
+        $('#submit').on('click', function () {
+            console.log('1')
+            $.ajax({
+                url:'wad/search',//不懂，问老师
+                method:'post',
+                data: {search: $('#input').val()},
+                dataType:'json',
+                success:function(data,status,xhr){
+                    console.log('2');
+                    console.log(data[0]);
+                    var source = $('#out').html();
+                    var template = Handlebars.compile(source);
+                    var da = {'wad': data};
+                    $('#sou').html(template(da));
+                },
+                error:function(xhr,status,error){
+                    console.log(error);
+                    layer.msg('对不起，没有找到搜索信息')
+                }
+            });
+        });
+    });
+</script>
+
+
+
+<!--搜索页搜索只搜索到一条跳到详情页和搜索不到-->
+<script type="text/javascript">
+    $(function(){
+        $('#submit').on('click', function () {
+            console.log('搜索按钮ok')
+            $.ajax({
+                url:'wad/search/counter',//不懂，问老师
+                type:'post',
+                data: {search: $('#input').val()},
+                dataType:'json',
+                success:function(data,status,xhr){
+                    console.log('数据ok');
+                    console.log(data);
+//                    if (data.counter == 1) {
+//                        window.location.href = 'index2.html?id=' + data.id
+//                    }
+                    if(data.counter == 0){
+                        layer.msg('对不起，没有找到搜索信息')
+                    }
+                },
+                error:function(xhr,status,error){
+                    console.log(error);
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>

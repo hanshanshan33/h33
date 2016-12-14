@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .moren{
+            width: 500px;
+            height: 600px;
+            background-color: #1ec896;
+            float: left;
+        }
+        .xianshi{
+            width: 200px;
+            height: 200px;
+            background-color: #0a83ef;
+            margin-left: 10px;
+            float: left;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="m" class="moren"></div>
+<div id="n" class="xianshi"></div>
+<script>
+    window.onload=function(){
+        var ojg=document.getElementById('m');
+        var oxs=document.getElementById('n');
+        var timer=null;
+        ojg.onmouseover=function(){
+            oxs.style.display='block'
+            clearTimeout(timer)
+        }
+        ojg.onmouseout= function () {
+            timer=setTimeout(function(){ oxs.style.display='none'},1000)
+
+        }
+    oxs.onmouseover=function(){
+        oxs.style.display='block'
+        clearTimeout(timer)
+    }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>详细信息</title>
+    <script src="jquery/jquery.min.js"></script>
+    <script src="js/js.cookie-2.1.0.min.js"></script>
+    <script src="arg-1.3.min.js"></script>
+    <script src="index2.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            font-family: "微软雅黑" "宋体";
+            /*height: 11111px;*/
+        }
+    .top{
+        height: 58px;
+        background-color: #191D3A;
+    }
+    .top .banxin{
+        width: 1000px;
+        height: 58px;
+        /*background-color: #fff;*/
+        margin: 0 auto;
+    }
+    .top .banxin .logo{
+        float: left;
+        color: white;
+        width: 185px;
+        height: 58px;
+        line-height: 58px;
+        padding-right: 40px;
+    }
+    .top .banxin ul{
+        list-style: none;
+    }
+    .top .banxin ul li{
+        float: left;
+        width: 100px;
+        height: 58px;
+        line-height: 58px;
+        text-align: center;
+    }
+    .top .banxin ul li a{
+        display: block;
+        text-decoration: none;
+        width: 100px;
+        height: 58px;
+        color: #ffffff;
+    }
+    .top .banxin ul li a:hover{
+        width: 100px;
+        height: 58px;
+        color: #ffffff;
+        background-color: #fcb618;
+    }
+    .top .banxin ul li.yi a{
+        color: #ffffff;
+        background-color: #fcb618;
+    }
+        .top .banxin .jrwm{
+            float: left;
+            width: 100px;
+            height: 34px;
+            background-color: #fcb618;
+            margin-left: 48px;
+            position: relative;
+            top: 12px;
+            left: 0;
+            text-align: center;
+            line-height: 34px;
+            color:white;
+            text-decoration: none;
+            font-size: 12px;
+            /*圆角边框：*/
+            border-radius: 4px;
+        }
+        .top .banxin a.jrwm:hover{
+            background-color: #fc7417;
+        }
+    .aa{
+        width: 100%;
+    }
+    .a1{
+        width: 660px;
+        float: left;
+    }
+    .a2{
+        width: 600px;
+        float: left;
+        margin-top: 70px;
+    }
+    #pp{ width: 300px;
+    height: 300px;
+    border-radius: 200px;
+        margin-left: 180px;margin-top: 50px;
+        background-color: #2aabd2;
+   }
+    .ss{font-size: 20px;font-family: 微软雅黑;
+    color: #fcb618;margin-bottom: 20px;
+    }
+        .news{
+            width: 1000px;
+            margin: 0 auto;
+            /*border: 1px solid #000;*/
+        }
+        .news .chanpin{
+            width: 1000px;
+            height: 200px;
+            padding-top: 30px;
+        }
+        .news .chanpin .dian2 ol{
+            list-style: none;
+            padding-left: 13px;
+        }
+        .news .chanpin .dian2 ol li{
+            float: left;
+            width: 12px;
+            height: 12px;
+            padding-right: 14px;
+            cursor: pointer;
+        }
+        .news .chanpin ul{
+            list-style: none;
+        }
+        .news .chanpin ul li{
+            float: left;
+            /*width: 218px; */
+            padding-right: 43px;
+        }
+        .news .chanpin ul li.you{
+            width: 217px;
+            padding-right: 0;
+        }
+        .news .chanpin ul li img{
+            width: 218px;
+            height: 130px;
+        }
+        .news .chanpin ul li h3{
+            padding-top: 3px;
+            line-height: 36px;
+            font-size: 14px;
+            text-align: center;
+        }
+        .news .chanpin ul li p{
+            font-size: 12px;
+            text-align: center;
+        }
+        .news .chanpin ul li p a{
+            /*display: block;*/
+            text-decoration: none;
+            font-size: 12px;
+            text-align: center;
+            color: #fcb618;
+            padding-right: 12px;
+            background-image: url(images/sanjiaoxing.png);
+            background-repeat: no-repeat;
+            background-position: right center;
+        }
+        .welcome:hover{text-decoration: none;color: #fcb618
+        }
+        .welcome{font-family: 微软雅黑; color: #fcb618;margin-left: 20px;margin-top: 20px;float: left;}
+</style>
+</head>
+<body>
+<div class="top">
+    <div class="banxin">
+        <div class="logo">33旅游网logo</div>
+        <ul>
+            <li>
+                <a href="index.html">首页</a>
+            </li>
+            <li>
+                <a href="#">旅游胜地</a>
+            </li>
+            <li>
+                <a href="#">美食分享</a>
+            </li>
+            <li>
+                <a href="#">吃喝玩乐</a>
+            </li>
+            <li>
+                <a href="#">热门推荐</a>
+            </li>
+            <li class="hou">
+                <a href="#">联系我们</a>
+            </li>
+        </ul>
+        <a id="ww" class="welcome"></a>
+    </div>
+
+</div>
+<div class="aa">
+    <div class="a1"><img id="pp" src=""></div>
+    <div class="a2"><p id="article_0" class="ss"></p>
+        <p id="article_1" class="ss"></p>
+        <p id="article_2" class="ss"></p>
+        <p id="article_3" class="ss"></p>
+        <p id="article_4" class="ss"></p>
+        <p id="article_5" class="ss"></p>
+        <p id="intro" class="ss"></p>
+    </div>
+</div>
+<div class="shan">
+    <div class="news">
+        <div class="chanpin">
+            <ul>
+                <li>
+                    <img id="sd" src="" />
+                    <!-- 		<img src="images/sanjiaoxing.png" alt="" />
+                    -->
+                </li>
+                <li>
+                    <img id="as" src="" />
+                </li>
+                <li>
+                    <img id="nx" src="" />
+                </li>
+                <li class="you">
+                    <img id="sda" src="" />
+                </li>
+
+            </ul>
+        </div>
+
+    </div>
+</div>
+<script type="text/javascript">
+    //<a href="loging.html" class="jrwm">用户登录</a>
+    if(Cookies.get('user')){
+        console.log(Cookies.get('user'));
+//		document.getElementById('ww').innerText = Cookies.get('user');
+        document.getElementById('ww').innerHTML = '<p class="x">欢迎您,' + Cookies.get('user') + '</p>'
+    } else {
+        var e = document.getElementById('ww');
+        console.log(e);
+        e.textContent = '用户登录';
+        e.setAttribute('class', 'jrwm');
+        e.setAttribute('href', 'login.html');
+        console.log('获取');
+    }
+</script>
+<script>
+    var id=Arg('id')
+    $(function(){
+        $.ajax({
+            url:'log/browse/wad/'+Arg('id'),
+            method:'get',
+            success:function(data,status,xhr){
+
+            },
+            error:function(xhr,status,error){},
+        })
+
+    })
+</script>
+<!--<script>-->
+    <!--$(function () {-->
+        <!--$.get('log/browse/wad/' + Arg('id'), function () {})-->
+    <!--})-->
+<!--</script>-->
+</body>
+</html>
